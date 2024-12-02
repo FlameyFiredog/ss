@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proxy and Emulator</title>
+  <script src="https://js-dos.com/6.22/js-dos.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    input, button {
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    iframe, canvas {
+      width: 90%;
+      height: 80vh;
+      border: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Proxy and Emulator</h1>
+  <p>Enter a URL to load:</p>
+  <form id="proxyForm">
+    <input type="text" id="urlInput" placeholder="https://example.com" required>
+    <button type="submit">Go</button>
+  </form>
+  <iframe id="proxyIframe" src=""></iframe>
+  
+  <h2>Emulator</h2>
+  <div id="jsdos"></div>
+  <script>
+    // Proxy Script
+    document.getElementById('proxyForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const url = document.getElementById('urlInput').value;
+      document.getElementById('proxyIframe').src = url;
+    });
+
+    // Emulator Script
+    (async () => {
+      const jsdos = new Dos(document.getElementById('jsdos'));
+      const ci = await jsdos.run("https://js-dos.com/cdn/js-dos/6.22/freedos.zip");
+    })();
+  </script>
+</body>
+</html>
